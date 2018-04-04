@@ -14,21 +14,21 @@ public class PlayerController : Controller
     protected Dictionary<string, InputAxis> AxisDelegates;
     protected Dictionary<string, InputButton> ButtonDelegates;
 
-    protected InputPoller IP; 
+    protected InputPoller IP;
     protected InputState IS;
     protected InputState ISprevious;
-    public FrameworkHUD HUD; 
+    public FrameworkHUD HUD;
 
     protected override void Start()
     {
         base.Start();
-        IsHuman = true; 
+        IsHuman = true;
 
-        IP = InputPoller.Self; 
+        IP = InputPoller.Self;
         if (!IP)
         {
             LOG_ERROR("****PLAYER CONTROLER: No Input Poller in Scene");
-            return; 
+            return;
         }
         AxisDelegates = new Dictionary<string, InputAxis>();
         ButtonDelegates = new Dictionary<string, InputButton>();
@@ -39,9 +39,9 @@ public class PlayerController : Controller
 
     protected void FixedUpdate()
     {
-        
+
         GetInput();
-        
+
         // Do not pass Pawn info to HUD if one or the other is missing. 
         if (!HUD && !PossesedPawn)
         {
@@ -50,9 +50,9 @@ public class PlayerController : Controller
                 LOG_ERROR("Missing Pawn or Hud for HUD Update");
             }
 
-            return; 
+            return;
         }
-        UpdateHUD(); 
+        UpdateHUD();
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class PlayerController : Controller
             LOG_ERROR("****PLAYER CONTROLER (" + gameObject.name + "): No Input Poller in Scene");
             return;
         }
-        
+
         IS = InputPoller.Self.GetPlayerInput(InputPlayerNumber);
         if (LogInputStateInfo)
         {
@@ -90,11 +90,11 @@ public class PlayerController : Controller
             if (!ButtonDelegates.ContainsKey(item.Key) && LogMissingInputDelegates)
             {
                 LOG_ERROR("****PLAYER CONTROLER (" + gameObject.name + "): " + item.Key + " has no defined Input Delegate");
-                break; 
+                break;
             }
             ButtonDelegates[item.Key].Invoke(item.Value);
         }
-        
+
         // Process Axis
         foreach (KeyValuePair<string, float> item in IS.Axes)
         {
@@ -138,8 +138,8 @@ public class PlayerController : Controller
     {
         if (value != 0)
         {
-            LOG("Del-Vertical (" + value +")");
-        }       
+            LOG("Del-Vertical (" + value + ")");
+        }
     }
 
     public virtual void Fire1(bool value)

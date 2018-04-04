@@ -14,6 +14,8 @@ public class Game : Info {
     public  GameObject SpawnPointPrefab;
     public static Game Self;
 
+
+
     public bool UseRandomSpawnPoint = false;
 
 

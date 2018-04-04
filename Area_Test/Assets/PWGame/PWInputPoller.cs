@@ -6,7 +6,8 @@ using UnityEngine;
 /// PW Test Application's Input. 
 /// 4 Players Currently Setup. 
 /// </summary>
-public class PWInputPoller : InputPoller {
+public class PWInputPoller : InputPoller
+{
 
     public override InputState GetPlayer1Input()
     {

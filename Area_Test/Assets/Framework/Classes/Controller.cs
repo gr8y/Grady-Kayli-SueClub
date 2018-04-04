@@ -8,9 +8,9 @@ public class Controller : Info {
     public bool IsHuman = false; 
 
     public static bool LogPossessionFailures = true;
-    public bool StartWithSpectator = true; 
+  
     public GameObject SpawnPreFab;
-    public GameObject SpectatorPreFab;
+
     protected GameObject SpectatorActor;
     //protected Pawn SpeactatorPawn; 
     
@@ -33,22 +33,7 @@ public class Controller : Info {
 
     protected virtual void Start()
     {
-        // Create Spectator Prefab
-        if (SpectatorPreFab)
-        {
-            SpectatorActor = Factory(SpectatorPreFab, Vector3.zero, new Quaternion(), this); 
-        }
-
-        if (StartWithSpectator)
-        {
-            // Grab the Spectator Prefab
-            RequestSpectate(); 
-        }
-        else
-        {
-            //  Spawn and new Active Game Object and grab it. 
-            RequestSpawn();  
-        }
+       
     }
 
     public Pawn GetPossesedPawn()
