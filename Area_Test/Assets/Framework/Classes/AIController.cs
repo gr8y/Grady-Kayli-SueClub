@@ -9,6 +9,8 @@ public class AIController : Controller
     /// Assigned NavMeshAgent to Pawn
     /// </summary>
     protected NavMeshAgent agent;
+    public Transform EnemySpawn;
+    int enemyCount = 1;
 
     protected override void Start()
     {
@@ -16,11 +18,23 @@ public class AIController : Controller
         IsAI = true;
         LogPossessionFailures = true;
         DefaultState_Enter();
+        Invoke("Spawn", 2);
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
-        DefaultState_Think(); 
+        DefaultState_Think();
+        
+    }
+
+    void Spawn()
+    {
+        if (enemyCount <= 10)
+        {
+            RequestSpawnAt(EnemySpawn);
+            enemyCount++;
+            Invoke("Spawn", 2);
+        }
     }
 
     public override bool PossesPawn(Pawn p)
@@ -31,12 +45,12 @@ public class AIController : Controller
             return false;
         }
 
-        agent = p.gameObject.AddComponent<NavMeshAgent>();
+        /*agent = p.gameObject.AddComponent<NavMeshAgent>();
         if (!agent)
         {
             LOG_ERROR("Could not Add NavMeshAgent to Pawn");
             return false;
-        }
+        }*/
 
         return true;
     }
