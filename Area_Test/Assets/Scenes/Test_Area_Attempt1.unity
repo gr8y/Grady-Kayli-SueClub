@@ -5852,6 +5852,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 1321607608439858, guid: 265514ef71ff60147bb8aa9ec6f5c827, type: 2}
+      propertyPath: m_Name
+      value: In Honor Of Kevin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 265514ef71ff60147bb8aa9ec6f5c827, type: 2}
   m_IsPrefabParent: 0
@@ -8162,7 +8166,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
