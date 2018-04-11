@@ -8,12 +8,33 @@ public class PWGame : Game {
     public List<Controller> ActivePlayerList;
     public Camera GameCamera;
 
+    //Game Mode Variable
+
+
     Transform SpawnLocation;
 
     public void Start()
     {
         // Temp for testing
-        OnEnterGameMap(); 
+        // OnEnterGameMap(); 
+    }
+
+    protected void FixedUpdate()
+    {
+        // Check Var for current Mode
+        // Get Input for all in Main menu Mode
+        // Get Input for Active in Game Mode
+        //   GetInput();
+    }
+
+    protected void FixedUpdate_MainMenu()
+    {
+       
+    }
+
+    protected void FixedUpdate_GameMap()
+    {
+        
     }
 
     public override GameObject RequestSpawn(Controller c, GameObject SpawnPreFab)
@@ -47,12 +68,18 @@ public class PWGame : Game {
 
     public void OnEnterMainMenu()
     {
+        // Set Game Mode Variable to Main Menu
+        
+        
         // Setup you need when your main menu is loaded
 
     }
 
     public void OnEnterGameMap()
     {
+        // Set Game Mode Variable to Game Map
+
+
         SpawnPoint SP = GameObject.FindObjectOfType<SpawnPoint>();
         if (!SP)
         {
