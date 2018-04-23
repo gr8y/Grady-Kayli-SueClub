@@ -314,6 +314,7 @@
     <Compile Include="Assets\PWGame\SpectatorPawn.cs" />
     <Compile Include="Assets\PWGame\SpiningProjectile.cs" />
     <Compile Include="Assets\Test_Scripts\CameraShaderApplierScript.cs" />
+    <Compile Include="Assets\Test_Scripts\IcePhysics.cs" />
     <Compile Include="Assets\Test_Scripts\MainMenuScript.cs" />
     <Compile Include="Assets\Test_Scripts\SelectionSCreen.cs" />
   </ItemGroup>

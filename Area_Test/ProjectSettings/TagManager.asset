@@ -6,6 +6,9 @@ TagManager:
   tags:
   - enemy
   - player
+  - Ice
+  - Stone
+  - Floor
   layers:
   - Default
   - TransparentFX
