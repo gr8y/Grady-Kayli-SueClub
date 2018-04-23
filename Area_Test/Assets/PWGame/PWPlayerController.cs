@@ -7,8 +7,10 @@ public class PWPlayerController : PlayerController {
 
     public bool HasJoinedGame = false; 
     public GameObject PlayerPawn;
-    public GameObject JoinButton; 
-    Text ButtonText; 
+    public GameObject JoinButton;
+    public GameObject SelectButtons; 
+    Text ButtonText;
+    SelectionSCreen Buttons; 
 
 
     // Use this for initialization
@@ -16,6 +18,13 @@ public class PWPlayerController : PlayerController {
     {
         base.Start();
         LogInputStateInfo = false;
+
+        if (!SelectButtons)
+        {
+            LOG_ERROR("No Select Button Assigned!");
+        }
+        Buttons = SelectButtons.GetComponent<SelectionSCreen>();
+        Buttons.PC = this; 
 
         if (!JoinButton)
         {

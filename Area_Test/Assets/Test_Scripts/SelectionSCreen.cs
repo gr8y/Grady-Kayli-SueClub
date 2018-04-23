@@ -19,6 +19,8 @@ public class SelectionSCreen : MonoBehaviour {
     public int CharIndex = 0; //K
     public GameObject[] CharacterSelect;
 
+    public PWPlayerController PC; 
+
 
 
     public void NextImage()
@@ -32,6 +34,8 @@ public class SelectionSCreen : MonoBehaviour {
 
             CharIndex = 0; // K
         }
+
+       
 
     }
 
@@ -54,6 +58,7 @@ public class SelectionSCreen : MonoBehaviour {
         DisplayImage.sprite = Gallery[Index];
 
         currentObj = CharacterSelect[CharIndex];
+        PC.SpawnPreFab = CharacterSelect[CharIndex];
     }
 
 }

@@ -9,8 +9,13 @@ public class PWGame : Game {
     public List<PWPlayerController> PlayerList;
     public List<PWPlayerController> ActivePlayerList;
     public Camera GameCamera;
+    public GameObject GameCameraObject;
+
+    public List<Vector3> PawnLocations; 
 
     public GameObject Testing;
+
+    public float OFD = 15f; // Off Set Distance  
 
     //Game Mode Variable
     bool IsInGameMap = false;
@@ -60,6 +65,37 @@ public class PWGame : Game {
         else { FixedUpdate_MainMenu(); }    
     }
 
+    protected void Update()
+    {
+        // Game Mode controls getting player input. 
+        if (IsInGameMap) { Update_GameMap(); }
+        else { Update_MainMenu(); }
+    }
+
+    protected void Update_MainMenu()
+    {
+        // Likely not doing anythign here right now... 
+    }
+
+    protected void Update_GameMap()
+    {
+        // Loop through ActivePlayerList and get each PC's Pawn location. Store Location in a list
+        PawnLocations.Clear();
+        foreach (PWPlayerController pc in ActivePlayerList)
+        {
+            PawnLocations.Add(pc.PossesedPawn.Location);
+        }
+
+        CenterCamera();
+        // Then Process where the camera's postion is based on location of the pawns.  
+    }
+
+
+    protected void CenterCamera()
+    {
+
+    }
+
     protected void FixedUpdate_MainMenu()
     {
         foreach (PWPlayerController pc in PlayerList)
@@ -76,10 +112,10 @@ public class PWGame : Game {
         }
     }
 
-    public override GameObject RequestSpawn(Controller c, GameObject SpawnPreFab)
+    public override GameObject RequestSpawn(Controller CR, GameObject SpawnPreFab)
     {
 
-        if (!SpawnPreFab || !c)
+        if (!SpawnPreFab || !CR)
         {
             LOG_ERROR("GAME: Request Spawn: Missing Controller or Spawn Prefab");
             return null;
@@ -87,20 +123,21 @@ public class PWGame : Game {
 
         Vector3 SpawnOffset = Vector3.zero;
         // Based on Player number, figure out a spawn offset. 
-        Controller CR = GameObject.FindObjectOfType<Controller>();
-        if (CR.PlayerNumber == 1)
-        {
-            //Vector3 SpawnOffset == Vector3.
-        }
+       
+        if (CR.PlayerNumber == 0 ) { SpawnOffset = new Vector3(OFD,  0, OFD); }
+        if (CR.PlayerNumber == 1 ) { SpawnOffset = new Vector3(-OFD, 0, OFD); }
+        if (CR.PlayerNumber == 2 ) { SpawnOffset = new Vector3(OFD,  0, -OFD); }
+        if (CR.PlayerNumber == 3 ) { SpawnOffset = new Vector3(-OFD, 0, -OFD); }
 
-        GameObject NewPawn = Factory(SpawnPreFab, SpawnLocation.position+ SpawnOffset, SpawnLocation.rotation, c);
+
+        GameObject NewPawn = Factory(SpawnPreFab, ( SpawnLocation.position + SpawnOffset) , SpawnLocation.rotation, CR);
         if (!NewPawn)
         {
             LOG_ERROR("GAME: Request Spawn: Could not Spawn New Pawn");
             return null;
         }
 
-        c.PossesPawn(NewPawn);
+        CR.PossesPawn(NewPawn);
 
         return NewPawn;
     }
@@ -119,22 +156,31 @@ public class PWGame : Game {
 
     public void OnEnterGameMap()
     {
-       // LOG("GAME START!");
+
+        // LOG("GAME START!");
         IsInGameMap = true;
 
-        SpawnPoint SP = GameObject.FindObjectOfType<SpawnPoint>();
-        if (!SP)
+        GameCamera = Camera.main;
+        GameCameraObject = GameCamera.gameObject; 
+
+        if (!EnemyPathPointHolder.Self)
         {
-            LOG_ERROR("NO SPAWN POINT IN MAP! BAD BAD BAD");
-            return;
+            Debug.LogError("No Player Spawn Point!"); 
+            return; 
         }
-        SpawnLocation = SP.Transform;
+
+        SpawnLocation = EnemyPathPointHolder.Self.PlayerSpawnPoint.transform;
         //LOG("Found SpawnPoint!");
 
         foreach(PWPlayerController pc in ActivePlayerList)
         {
-            RequestSpawn(pc, Testing);
-            pc.PossesPawn(Testing);
+            GameObject newpawn =  RequestSpawn(pc, pc.SpawnPreFab);
+            if (!newpawn)
+            {
+                Debug.LogError("Bad PC Spawn Spawn");
+                return; 
+            }
+            //pc.PossesPawn(newpawn);
         }
         // go though Active Player List and Spawn their Player. 
         // call Request spawn on the Controller.

@@ -29,7 +29,7 @@ public class Controller : Info {
 
 
 
-    protected Pawn PossesedPawn;
+    public Pawn PossesedPawn;
 
     protected virtual void Start()
     {

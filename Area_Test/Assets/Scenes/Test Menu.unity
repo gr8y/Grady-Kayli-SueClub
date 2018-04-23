@@ -593,6 +593,61 @@ Prefab:
       value: 
       objectReference: {fileID: 1104169777545946, guid: 001337c7d22ad4147bc2c9f5a85f726e,
         type: 2}
+    - target: {fileID: 114714701114524974, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: PlayerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804092337527366, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: PlayerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804092337527366, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: InputPlayerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114714701114524974, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: InputPlayerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790935953337588, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: InputPlayerNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790935953337588, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: PlayerNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114706404346806578, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: OFD
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114920805269233634, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: SelectButtons
+      value: 
+      objectReference: {fileID: 1576069376}
+    - target: {fileID: 114714701114524974, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: SelectButtons
+      value: 
+      objectReference: {fileID: 1930827231}
+    - target: {fileID: 114804092337527366, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: SelectButtons
+      value: 
+      objectReference: {fileID: 1568261310}
+    - target: {fileID: 114790935953337588, guid: 79873bd98374257419ee8d8018088cd4,
+        type: 2}
+      propertyPath: SelectButtons
+      value: 
+      objectReference: {fileID: 1544831259}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79873bd98374257419ee8d8018088cd4, type: 2}
   m_IsPrefabParent: 0
@@ -606,8 +661,28 @@ GameObject:
   m_PrefabParentObject: {fileID: 1920955779101588, guid: 627c0c8b3038f6242845074b42254a1b,
     type: 2}
   m_PrefabInternal: {fileID: 360812339}
+--- !u!1 &1544831259 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1495660618002198, guid: 627c0c8b3038f6242845074b42254a1b,
+    type: 2}
+  m_PrefabInternal: {fileID: 360812339}
+--- !u!1 &1568261310 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1179749595345066, guid: 627c0c8b3038f6242845074b42254a1b,
+    type: 2}
+  m_PrefabInternal: {fileID: 360812339}
+--- !u!1 &1576069376 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1878788034688004, guid: 627c0c8b3038f6242845074b42254a1b,
+    type: 2}
+  m_PrefabInternal: {fileID: 360812339}
 --- !u!1 &1804623069 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1569825073585498, guid: 627c0c8b3038f6242845074b42254a1b,
+    type: 2}
+  m_PrefabInternal: {fileID: 360812339}
+--- !u!1 &1930827231 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1853414705165844, guid: 627c0c8b3038f6242845074b42254a1b,
     type: 2}
   m_PrefabInternal: {fileID: 360812339}

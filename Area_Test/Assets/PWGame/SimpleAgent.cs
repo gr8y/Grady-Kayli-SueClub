@@ -48,7 +48,7 @@ public class SimpleAgent : Pawn {
     void NextPathPoint()
     {
         PathPointIndex++;
-        if (PathPointIndex == 3)
+        if (PathPointIndex >= PathPoints.Length)
         {
             Explosion.gameObject.SetActive(true);
             Invoke("OnDeath", 0.5f);
