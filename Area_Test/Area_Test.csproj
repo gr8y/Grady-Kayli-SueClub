@@ -317,6 +317,7 @@
     <Compile Include="Assets\Test_Scripts\IcePhysics.cs" />
     <Compile Include="Assets\Test_Scripts\MainMenuScript.cs" />
     <Compile Include="Assets\Test_Scripts\SelectionSCreen.cs" />
+    <Compile Include="Assets\UI\ThisIsMainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Test_Shaders\PixelateShader.shader" />

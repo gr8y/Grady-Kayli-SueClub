@@ -63,7 +63,7 @@ public class PlayerController : Controller
 
     }
 
-    protected virtual void GetInput()
+    public virtual void GetInput() //USED TO BE PROTECTED
     {
         if (!IP)
         {

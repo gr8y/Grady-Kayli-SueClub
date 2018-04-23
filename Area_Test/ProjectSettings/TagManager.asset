@@ -9,6 +9,7 @@ TagManager:
   - Ice
   - Stone
   - Floor
+  - TargetWall
   layers:
   - Default
   - TransparentFX

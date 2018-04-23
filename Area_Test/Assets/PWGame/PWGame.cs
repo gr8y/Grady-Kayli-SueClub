@@ -1,40 +1,79 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PWGame : Game {
 
-    public List<Controller> PlayerList;
-    public List<Controller> ActivePlayerList;
+    public List<PWPlayerController> PlayerList;
+    public List<PWPlayerController> ActivePlayerList;
     public Camera GameCamera;
 
-    //Game Mode Variable
+    public Button JoinButton;
 
+    //Game Mode Variable
+    bool IsInGameMap = false;
 
     Transform SpawnLocation;
 
     public void Start()
     {
-        // Temp for testing
-        // OnEnterGameMap(); 
+        DontDestroyOnLoad(gameObject); 
+    }
+     
+
+    public void ToggleJoinP1()
+    {
+        PlayerList[0].ToggleJoinButton(); 
     }
 
+    public void ToggleJoinP2()
+    {
+        PlayerList[1].ToggleJoinButton();
+    }
+
+    public void ToggleJoinP3()
+    {
+        PlayerList[2].ToggleJoinButton();
+    }
+
+    public void ToggleJoinP4()
+    {
+        PlayerList[3].ToggleJoinButton();
+    }
+
+    public void StartGameButton()
+    {
+        //LOG("player count " + ActivePlayerList.Count); 
+       if (ActivePlayerList.Count > 0)
+        {
+            SceneManager.LoadScene("Test_Area_Attempt1");
+        }
+        
+        
+    }
     protected void FixedUpdate()
     {
-        // Check Var for current Mode
-        // Get Input for all in Main menu Mode
-        // Get Input for Active in Game Mode
-        //   GetInput();
+        // Game Mode controls getting player input. 
+        if (IsInGameMap) {   FixedUpdate_GameMap(); }
+        else { FixedUpdate_MainMenu(); }    
     }
 
     protected void FixedUpdate_MainMenu()
     {
-       
+        foreach (PlayerController pc in PlayerList)
+        {
+            pc.GetInput();
+        }
     }
 
     protected void FixedUpdate_GameMap()
     {
-        
+        foreach (PlayerController pc in ActivePlayerList)
+        {
+            pc.GetInput();
+        }
     }
 
     public override GameObject RequestSpawn(Controller c, GameObject SpawnPreFab)
@@ -68,17 +107,20 @@ public class PWGame : Game {
 
     public void OnEnterMainMenu()
     {
-        // Set Game Mode Variable to Main Menu
+        //LOG("MAIN MENU START!");
+
+        IsInGameMap = false;
+        // Clear the Active Player List, They need to all rejoin. 
+        ActivePlayerList.Clear();
+
         
-        
-        // Setup you need when your main menu is loaded
 
     }
 
     public void OnEnterGameMap()
     {
-        // Set Game Mode Variable to Game Map
-
+       // LOG("GAME START!");
+        IsInGameMap = true;
 
         SpawnPoint SP = GameObject.FindObjectOfType<SpawnPoint>();
         if (!SP)
@@ -87,7 +129,7 @@ public class PWGame : Game {
             return;
         }
         SpawnLocation = SP.Transform;
-
+        //LOG("Found SpawnPoint!");
 
         // go though Active Player List and Spawn their Player. 
         // call Request spawn on the Controller.
@@ -95,7 +137,17 @@ public class PWGame : Game {
         // set up you need when your game map is loaded. 
         // forexample telling each player controller to find it's pawn. 
     }
+    public void ToggleJoinButton(bool enabled)
+    {
 
+        JoinButton.gameObject.SetActive(false);
+
+    }
+
+    public void ToggleStartButton()
+    {
+
+    }
     // manage gamecam here :: find center between active players --> then draw out as player branches
     // find 2 farthest apart players then get midpoint
 }

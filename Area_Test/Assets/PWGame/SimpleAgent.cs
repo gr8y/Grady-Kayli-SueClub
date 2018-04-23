@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI; 
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class SimpleAgent : Pawn {
     
@@ -9,12 +10,15 @@ public class SimpleAgent : Pawn {
     int PathPointIndex = 0; 
     NavMeshAgent agent;
 
+    public ParticleSystem Explosion;
     float time = 2;
     public int damageAmount = 10;
     public Transform EnemySpawn;
+    public int EnemyHealth = 100;
 
     void Start ()
     {
+        Explosion.Stop();
         agent = gameObject.GetComponent<NavMeshAgent>(); 
         if (!agent)
         {
@@ -37,15 +41,33 @@ public class SimpleAgent : Pawn {
     void NextPathPoint()
     {
         PathPointIndex++;
-       /* if (PathPointIndex == 2)
+        if (PathPointIndex == 3)
         {
-            
-        }*/
-        agent.SetDestination(PathPoints[PathPointIndex].transform.position);
+            Explosion.gameObject.SetActive(true);
+            Invoke("OnDeath", 0.5f);
+        }
+        else
+        {
+            agent.SetDestination(PathPoints[PathPointIndex].transform.position);
+        }
+    }
+
+    void OnDeath()
+    {
+        Destroy(this.gameObject);
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "player")
+        {
+            Actor OtherActor = other.gameObject.GetComponentInParent<Actor>();
+            if (OtherActor)
+            {
+                OtherActor.TakeDamage(this, damageAmount, new DamageEventInfo(typeof(EnemyDamageType)), Owner);
+            }
+        }
+
+        if(other.gameObject.tag == "TargetWall")
         {
             Actor OtherActor = other.gameObject.GetComponentInParent<Actor>();
             if (OtherActor)

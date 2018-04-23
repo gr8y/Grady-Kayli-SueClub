@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class PWPlayerController : PlayerController {
 
     public bool HasJoinedGame = false; 
-    public GameObject PlayerPawn; 
+    public GameObject PlayerPawn;
+    public GameObject JoinButton; 
+    Text ButtonText; 
 
 
     // Use this for initialization
@@ -14,6 +17,13 @@ public class PWPlayerController : PlayerController {
         base.Start();
         LogInputStateInfo = false;
 
+        if (!JoinButton)
+        {
+            LOG_ERROR("No Join Button Assigned!");
+        }
+        ButtonText = JoinButton.GetComponentInChildren<Text>();
+
+        ButtonText.text = "Join"; 
 
         if (!PlayerPawn)
         {
@@ -23,9 +33,31 @@ public class PWPlayerController : PlayerController {
 
     }
 
-    protected override void UpdateHUD()
+    public void ToggleJoinButton()
     {
-      
+        // Get our GAme Objrct 
+        PWGame pwg = (PWGame)Game.Self;
+        if (!pwg)
+        {
+            Debug.LogError("No Game Object!");
+            return;
+        }
+
+        // Is Player in Active List already 
+        if ( pwg.ActivePlayerList.Contains(this)) 
+        {
+            // if true, remove them.... 
+            pwg.ActivePlayerList.Remove(this);
+            ButtonText.text = "Join";
+        } else
+        {
+            // if flase, adds them
+            pwg.ActivePlayerList.Add(this);
+            ButtonText.text = "Leave";
+        }
+
+        //JoinButton.SetActive(false);
+
     }
 
     public override void Horizontal(float value)
