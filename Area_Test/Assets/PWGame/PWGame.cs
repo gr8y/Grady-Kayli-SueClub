@@ -93,6 +93,7 @@ public class PWGame : Game {
 
     protected void CenterCamera()
     {
+        //  PawnLocations is a list that holds vector3's you need to figure this out. 
 
     }
 
