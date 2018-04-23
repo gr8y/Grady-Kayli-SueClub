@@ -10,7 +10,7 @@ public class PWGame : Game {
     public List<PWPlayerController> ActivePlayerList;
     public Camera GameCamera;
 
-    public Button JoinButton;
+    public GameObject Testing;
 
     //Game Mode Variable
     bool IsInGameMap = false;
@@ -62,7 +62,7 @@ public class PWGame : Game {
 
     protected void FixedUpdate_MainMenu()
     {
-        foreach (PlayerController pc in PlayerList)
+        foreach (PWPlayerController pc in PlayerList)
         {
             pc.GetInput();
         }
@@ -70,7 +70,7 @@ public class PWGame : Game {
 
     protected void FixedUpdate_GameMap()
     {
-        foreach (PlayerController pc in ActivePlayerList)
+        foreach (PWPlayerController pc in ActivePlayerList)
         {
             pc.GetInput();
         }
@@ -131,23 +131,17 @@ public class PWGame : Game {
         SpawnLocation = SP.Transform;
         //LOG("Found SpawnPoint!");
 
+        foreach(PWPlayerController pc in ActivePlayerList)
+        {
+            RequestSpawn(pc, Testing);
+            pc.PossesPawn(Testing);
+        }
         // go though Active Player List and Spawn their Player. 
         // call Request spawn on the Controller.
 
         // set up you need when your game map is loaded. 
         // forexample telling each player controller to find it's pawn. 
     }
-    public void ToggleJoinButton(bool enabled)
-    {
-
-        JoinButton.gameObject.SetActive(false);
-
-    }
-
-    public void ToggleStartButton()
-    {
-
-    }
-    // manage gamecam here :: find center between active players --> then draw out as player branches
+       // manage gamecam here :: find center between active players --> then draw out as player branches
     // find 2 farthest apart players then get midpoint
 }

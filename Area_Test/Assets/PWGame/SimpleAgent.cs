@@ -18,6 +18,13 @@ public class SimpleAgent : Pawn {
 
     void Start ()
     {
+
+        if (!EnemyPathPointHolder.Self)
+        {
+            Debug.LogError("No Path Point Holder in Scene! BAD! BAD! BAD! BAD!"); 
+        }
+        PathPoints = EnemyPathPointHolder.Self.PathPoints; 
+
         Explosion.Stop();
         agent = gameObject.GetComponent<NavMeshAgent>(); 
         if (!agent)
