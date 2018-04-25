@@ -301,6 +301,7 @@
     <Compile Include="Assets\Framework\Classes\SpawnPoint.cs" />
     <Compile Include="Assets\PWGame\AIC_PathRunner.cs" />
     <Compile Include="Assets\PWGame\EnemyDamageType.cs" />
+    <Compile Include="Assets\PWGame\EnemyPathPointHolder.cs" />
     <Compile Include="Assets\PWGame\EnemyPawn.cs" />
     <Compile Include="Assets\PWGame\HUD.cs" />
     <Compile Include="Assets\PWGame\Projectile.cs" />
@@ -317,6 +318,7 @@
     <Compile Include="Assets\Test_Scripts\IcePhysics.cs" />
     <Compile Include="Assets\Test_Scripts\MainMenuScript.cs" />
     <Compile Include="Assets\Test_Scripts\SelectionSCreen.cs" />
+    <Compile Include="Assets\UI\ThisIsGameMap.cs" />
     <Compile Include="Assets\UI\ThisIsMainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
