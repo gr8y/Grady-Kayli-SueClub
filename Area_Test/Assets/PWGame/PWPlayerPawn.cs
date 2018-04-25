@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PWPlayerPawn : PWPawn {
 
+    bool PuzzleZone = false;
+
     Rigidbody rb;
     public float MoveSpeed = 10f;
     public float RotateSpeed = 180f;
     public float MinVelocity = .01f;
+    public float SlipSpeed = 15f;
 
+    public float Deadzone = .1f; 
     //public Transform ProjectileSpawn;
     //public GameObject Projectile1;
     //public GameObject Projectile2;
@@ -20,7 +24,7 @@ public class PWPlayerPawn : PWPawn {
 
         // Add and Set up Rigid Body
         rb = gameObject.AddComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         //currentProjectile = Projectile1;
 
     }
@@ -47,7 +51,7 @@ public class PWPlayerPawn : PWPawn {
 
     public virtual void FixedUpdate()
     {
-        if (rb.velocity.magnitude < MinVelocity)
+        if (rb.velocity.magnitude < Deadzone)
         {
             rb.velocity = Vector3.zero;
         }
@@ -57,7 +61,13 @@ public class PWPlayerPawn : PWPawn {
     {
         if (value != 0)
         {
-            gameObject.transform.Rotate(0, (RotateSpeed * value * Time.fixedDeltaTime), 0);
+            if (PuzzleZone != true)
+            {
+                Vector3 speed = rb.velocity; 
+                speed.x = MoveSpeed * value;
+                rb.velocity = speed; 
+               
+            }
         }
     }
 
@@ -65,7 +75,37 @@ public class PWPlayerPawn : PWPawn {
     {
         if (value != 0)
         {
-            rb.velocity = gameObject.transform.forward * MoveSpeed * value;
+            if (PuzzleZone != true)
+            {
+                Vector3 speed = rb.velocity;
+                speed.z = -MoveSpeed * value;
+                rb.velocity = speed;
+
+            }
+        }
+    }
+    
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "MovePlane")
+        {
+            PuzzleZone = true;
+            if (Input.GetKeyDown("d"))
+            {
+                rb.velocity = transform.right * SlipSpeed;
+            }
+            else if (Input.GetKeyDown("a"))
+            {
+                rb.velocity = transform.right * -SlipSpeed;
+            }
+            else if (Input.GetKeyDown("w"))
+            {
+                rb.velocity = transform.forward * SlipSpeed;
+            }
+            else if (Input.GetKeyDown("s"))
+            {
+                rb.velocity = transform.forward * -SlipSpeed;
+            }
         }
     }
 

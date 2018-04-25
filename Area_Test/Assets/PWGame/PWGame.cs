@@ -14,6 +14,9 @@ public class PWGame : Game {
     public List<Vector3> PawnLocations; 
 
     public GameObject Testing;
+    private Vector3 camCenter;
+
+    public GameObject healthCanvas;
 
     public float OFD = 15f; // Off Set Distance  
 
@@ -24,7 +27,8 @@ public class PWGame : Game {
 
     public void Start()
     {
-        DontDestroyOnLoad(gameObject); 
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(healthCanvas);
     }
      
 
@@ -84,6 +88,7 @@ public class PWGame : Game {
         foreach (PWPlayerController pc in ActivePlayerList)
         {
             PawnLocations.Add(pc.PossesedPawn.Location);
+            pc.HPBar.SetActive(true);
         }
 
         CenterCamera();
@@ -94,6 +99,33 @@ public class PWGame : Game {
     protected void CenterCamera()
     {
         //  PawnLocations is a list that holds vector3's you need to figure this out. 
+        camCenter = new Vector3(0, 0, 0);
+        /*for (int i = 0; i <= PawnLocations.Count; i++)
+        {
+            camCenter += PawnLocations[i];
+            camCenter /= PawnLocations.Count;
+            Camera.main.transform.position = new Vector3(camCenter.x, 17.0f, camCenter.z);
+            
+        }*/
+
+        //THANK YOU PROF. WALEK
+        Vector3 result = Vector3.zero;
+        // Start Small for the Max. Start Large for the Min
+        Vector3 MaxExtent = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+        Vector3 MinExtent = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+
+        foreach (Vector3 place in PawnLocations)
+        {
+            MaxExtent = Vector3.Max(place, MaxExtent);
+            MinExtent = Vector3.Min(place, MinExtent);
+        }
+        Vector3 Extent = MaxExtent - MinExtent;
+        Extent = Extent * .5f; // Divide  
+        result = MinExtent + Extent;
+
+        Camera.main.transform.position = new Vector3(result.x, 35.0f, result.z);
+
+        //return result;
 
     }
 
@@ -147,12 +179,22 @@ public class PWGame : Game {
     {
         //LOG("MAIN MENU START!");
 
+
+
         IsInGameMap = false;
         // Clear the Active Player List, They need to all rejoin. 
         ActivePlayerList.Clear();
 
-        
-
+        Pawn MMP = GameObject.FindObjectOfType<Pawn>();
+        if (!MMP)
+        {
+            Debug.LogError("No Main Menu Pawn!");
+            return;
+        }
+        foreach (PWPlayerController pc in PlayerList)
+        {
+            pc.PossesPawn(MMP); 
+        }
     }
 
     public void OnEnterGameMap()

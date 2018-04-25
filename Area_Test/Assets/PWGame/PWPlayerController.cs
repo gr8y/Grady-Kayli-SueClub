@@ -8,7 +8,8 @@ public class PWPlayerController : PlayerController {
     public bool HasJoinedGame = false; 
     public GameObject PlayerPawn;
     public GameObject JoinButton;
-    public GameObject SelectButtons; 
+    public GameObject SelectButtons;
+    public GameObject HPBar;
     Text ButtonText;
     SelectionSCreen Buttons; 
 

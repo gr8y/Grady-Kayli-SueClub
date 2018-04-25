@@ -29,12 +29,10 @@ public class AIController : Controller
 
     void Spawn()
     {
-        if (enemyCount <= 10)
-        {
-            RequestSpawnAt(EnemySpawn);
-            enemyCount++;
-            Invoke("Spawn", 2);
-        }
+        RequestSpawnAt(EnemySpawn);
+        enemyCount++;
+        Invoke("Spawn", 2);
+        
     }
 
     public override bool PossesPawn(Pawn p)
