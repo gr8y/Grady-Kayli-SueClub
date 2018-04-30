@@ -4,7 +4,7 @@
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
-	_Columns("Pixel Columns", Float) = 64
+	    _Columns("Pixel Columns", Float) = 64
 		_Rows("Pixel Rows", Float) = 64
 	}
 		SubShader
