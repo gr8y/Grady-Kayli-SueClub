@@ -18,6 +18,14 @@ public class PWGame : Game {
 
     public GameObject healthCanvas;
 
+    public AudioSource startMenu;
+    public AudioSource startGame;
+    public AudioSource changeClass;
+
+    public AudioClip startMenuClip;
+    public AudioClip startGameClip;
+    public AudioClip changeClassClip;
+
     public float OFD = 15f; // Off Set Distance  
 
     //Game Mode Variable
@@ -34,7 +42,7 @@ public class PWGame : Game {
 
     public void ToggleJoinP1()
     {
-        PlayerList[0].ToggleJoinButton(); 
+        PlayerList[0].ToggleJoinButton();
     }
 
     public void ToggleJoinP2()
