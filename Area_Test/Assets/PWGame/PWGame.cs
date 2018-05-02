@@ -15,6 +15,7 @@ public class PWGame : Game {
 
     public GameObject Testing;
     private Vector3 camCenter;
+    private Vector3 desiredPosition;
 
     public GameObject healthCanvas;
 
@@ -63,7 +64,7 @@ public class PWGame : Game {
     public void StartGameButton()
     {
         //LOG("player count " + ActivePlayerList.Count); 
-       if (ActivePlayerList.Count > 0)
+       if (ActivePlayerList.Count > 1)
         {
             SceneManager.LoadScene("Test_Area_Attempt1");
         }
@@ -99,7 +100,9 @@ public class PWGame : Game {
             pc.HPBar.SetActive(true);
         }
 
-        CenterCamera();
+        //CenterCamera();
+        ZoomCamera();
+
         // Then Process where the camera's postion is based on location of the pawns.  
     }
 
@@ -108,13 +111,6 @@ public class PWGame : Game {
     {
         //  PawnLocations is a list that holds vector3's you need to figure this out. 
         camCenter = new Vector3(0, 0, 0);
-        /*for (int i = 0; i <= PawnLocations.Count; i++)
-        {
-            camCenter += PawnLocations[i];
-            camCenter /= PawnLocations.Count;
-            Camera.main.transform.position = new Vector3(camCenter.x, 17.0f, camCenter.z);
-            
-        }*/
 
         //THANK YOU PROF. WALEK
         Vector3 result = Vector3.zero;
@@ -133,7 +129,46 @@ public class PWGame : Game {
 
         Camera.main.transform.position = new Vector3(result.x, 35.0f, result.z);
 
-        //return result;
+        float distance = Extent.magnitude;
+
+
+    }
+    protected void ZoomCamera()
+    {
+        camCenter = new Vector3(0, 0, 0);
+        Vector3 midPoint = Vector3.zero;
+        float zoomFactor = 2.2f;
+        float followTimeDelta = 0.3f;
+
+        Vector3 Max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+        Vector3 Min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+
+        foreach (Vector3 p in PawnLocations)
+        {
+            Max = Vector3.Max(p, Max);
+            Min = Vector3.Min(p, Min);
+        }
+
+        Vector3 Extent = Max - Min;
+        
+        Extent = Extent * .5f; // Divide 
+        
+        midPoint = Min + Extent;
+
+        float distance = Extent.magnitude;
+
+        Vector3 cameraDestination = midPoint - Camera.main.transform.forward * distance * zoomFactor;
+        if (Camera.main.orthographic)
+        {
+            Camera.main.orthographicSize = distance;
+        }
+
+        Camera.main.transform.position = Vector3.Slerp(Camera.main.transform.position, cameraDestination, followTimeDelta);
+
+        if ((cameraDestination - Camera.main.transform.position).magnitude <= 0.05f)
+        {
+            Camera.main.transform.position = cameraDestination;
+        }
 
     }
 

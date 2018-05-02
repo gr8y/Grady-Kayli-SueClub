@@ -66,7 +66,7 @@ Transform:
   m_GameObject: {fileID: 1236403623797868}
   m_LocalRotation: {x: 0, y: -0.50932246, z: 0, w: 0.8605758}
   m_LocalPosition: {x: 0.74, y: 1, z: 49.49}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4501017650650002}
   m_Father: {fileID: 0}
@@ -129,10 +129,11 @@ MonoBehaviour:
   IsSpectator: 1
   StartingHP: 100
   HP: 100
-  MoveSpeed: 10
+  MoveSpeed: 6
   RotateSpeed: 180
   MinVelocity: 0.01
   SlipSpeed: 15
+  Deadzone: 0.1
 --- !u!136 &136700010403252514
 CapsuleCollider:
   m_ObjectHideFlags: 1
