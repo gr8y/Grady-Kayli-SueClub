@@ -63,7 +63,7 @@ public class PWGame : Game {
     public void StartGameButton()
     {
         //LOG("player count " + ActivePlayerList.Count); 
-       if (ActivePlayerList.Count > 0)
+       if (ActivePlayerList.Count > 1)
         {
             SceneManager.LoadScene("Test_Area_Attempt1");
         }
@@ -108,13 +108,8 @@ public class PWGame : Game {
     {
         //  PawnLocations is a list that holds vector3's you need to figure this out. 
         camCenter = new Vector3(0, 0, 0);
-        /*for (int i = 0; i <= PawnLocations.Count; i++)
-        {
-            camCenter += PawnLocations[i];
-            camCenter /= PawnLocations.Count;
-            Camera.main.transform.position = new Vector3(camCenter.x, 17.0f, camCenter.z);
-            
-        }*/
+        float zoomFactor = 2.0f;
+        float followTimeDelta = 0.8f;
 
         //THANK YOU PROF. WALEK
         Vector3 result = Vector3.zero;
@@ -131,9 +126,20 @@ public class PWGame : Game {
         Extent = Extent * .5f; // Divide  
         result = MinExtent + Extent;
 
-        Camera.main.transform.position = new Vector3(result.x, 35.0f, result.z);
+        float distance = Extent.magnitude;
 
-        //return result;
+        //Camera.main.transform.position = new Vector3(result.x, 35.0f, result.z);
+
+        Vector3 cameraDestination = result - Camera.main.transform.forward * distance * zoomFactor;
+
+        if (Camera.main.orthographic)
+        {
+            Camera.main.orthographicSize = distance;
+        }
+        Camera.main.transform.position = Vector3.Slerp(Camera.main.transform.position, cameraDestination, followTimeDelta);
+
+        if ((cameraDestination - Camera.main.transform.position).magnitude <= 0.05f)
+            Camera.main.transform.position = cameraDestination;
 
     }
 
