@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4907002222841078}
-  - component: {fileID: 114944787721225642}
+  - component: {fileID: 114875607006665208}
   m_Layer: 8
   m_Name: Class2
   m_TagString: Untagged
@@ -113,7 +113,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1126233467107852}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114944787721225642
+--- !u!114 &114875607006665208
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1099900020997784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b53fa2013e123642909f2d228d7bba4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b5b00c54b1739c4a8d57b1bcae87c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IgnoresDamage: 1
@@ -129,10 +129,6 @@ MonoBehaviour:
   IsSpectator: 1
   StartingHP: 100
   HP: 100
-  MoveSpeed: 10
-  RotateSpeed: 180
-  MinVelocity: 0.01
-  SlipSpeed: 15
 --- !u!136 &136810407801756806
 CapsuleCollider:
   m_ObjectHideFlags: 1

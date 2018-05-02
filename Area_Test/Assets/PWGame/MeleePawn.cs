@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PWPlayerPawn : PWPawn {
-
+public class MeleePawn : PWPawn
+{
     bool PuzzleZone = false;
 
     Rigidbody rb;
@@ -12,9 +12,12 @@ public class PWPlayerPawn : PWPawn {
     public float MinVelocity = .01f;
     public float SlipSpeed = 15f;
 
-    public float Deadzone = .1f; 
-    public Transform ProjectileSpawn;
-    public GameObject Projectile1;
+    int HitDistance;
+    int MaxHit = 2;
+
+    public float Deadzone = .1f;
+
+  
     //public GameObject Projectile2;
     //GameObject currentProjectile;
 
@@ -63,10 +66,10 @@ public class PWPlayerPawn : PWPawn {
         {
             if (PuzzleZone != true)
             {
-                Vector3 speed = rb.velocity; 
+                Vector3 speed = rb.velocity;
                 speed.x = MoveSpeed * value;
-                rb.velocity = speed; 
-               
+                rb.velocity = speed;
+
             }
         }
     }
@@ -84,10 +87,10 @@ public class PWPlayerPawn : PWPawn {
             }
         }
     }
-    
+
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "MovePlane")
+        if (other.gameObject.tag == "MovePlane")
         {
             PuzzleZone = true;
             if (Input.GetKeyDown("d"))
@@ -109,31 +112,26 @@ public class PWPlayerPawn : PWPawn {
         }
     }
 
-   public override void Fire1(bool value)
+    public override void Fire1(bool value)
     {
         if (value)
         {
+            RaycastHit MyHit;
+           
+            if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out MyHit))
+            {
+                //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * MyHit.distance, Color.yellow);
+                //Debug.Log("Did Hit");
+                Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+                if (Physics.Raycast(transform.position, fwd, 10))
+                    print("There is something in front of the object!");
+            }
+        }
             
-             Factory(Projectile1, ProjectileSpawn.position, ProjectileSpawn.rotation, controller);
+        
 
-        }
-    }
- /*
-    public override void Fire2(bool value)
-    {
-        if (value)
-        {
-            // Set Current Projectile to Prijectile 1
-            currentProjectile = Projectile1;
-        }
+    
     }
 
-    public override void Fire3(bool value)
-    {
-        if (value)
-        {
-            // Set Current Projectile to Prijectile 2
-            currentProjectile = Projectile2;
-        }
-    }*/
 }
