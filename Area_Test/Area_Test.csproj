@@ -305,7 +305,6 @@
     <Compile Include="Assets\PWGame\EnemyPawn.cs" />
     <Compile Include="Assets\PWGame\Goal.cs" />
     <Compile Include="Assets\PWGame\HUD.cs" />
-    <Compile Include="Assets\PWGame\MeleePawn.cs" />
     <Compile Include="Assets\PWGame\Projectile.cs" />
     <Compile Include="Assets\PWGame\ProjectileDamageType.cs" />
     <Compile Include="Assets\PWGame\PWGame.cs" />

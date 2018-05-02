@@ -6,7 +6,7 @@ public class Projectile : Actor {
 
     public float damageAmount = 10.0f;
     public float movementSpeed = 20f;
-    public float lifetime = 5f;
+    public float lifetime = 2f;
     Rigidbody rb; 
     
     void Start()

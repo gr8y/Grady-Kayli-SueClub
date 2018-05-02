@@ -13,8 +13,8 @@ public class PWPlayerPawn : PWPawn {
     public float SlipSpeed = 15f;
 
     public float Deadzone = .1f; 
-    public Transform ProjectileSpawn;
-    public GameObject Projectile1;
+    //public Transform ProjectileSpawn;
+    //public GameObject Projectile1;
     //public GameObject Projectile2;
     //GameObject currentProjectile;
 
@@ -109,16 +109,16 @@ public class PWPlayerPawn : PWPawn {
         }
     }
 
-   public override void Fire1(bool value)
+    /*public override void Fire1(bool value)
     {
         if (value)
         {
-            
-             Factory(Projectile1, ProjectileSpawn.position, ProjectileSpawn.rotation, controller);
+            // Fire Projectile
+            //  Factory(currentProjectile, ProjectileSpawn.position, ProjectileSpawn.rotation, controller);
 
         }
     }
- /*
+
     public override void Fire2(bool value)
     {
         if (value)
