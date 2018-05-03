@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -42,7 +42,7 @@ MonoBehaviour:
     y: 30
     width: 1680
     height: 917
-  m_MinSize: {x: 683, y: 492}
+  m_MinSize: {x: 681, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
   controlID: 9
@@ -90,8 +90,8 @@ MonoBehaviour:
     y: 0
     width: 297
     height: 641
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -144,7 +144,7 @@ MonoBehaviour:
     y: 0
     width: 1680
     height: 967
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -207,7 +207,7 @@ MonoBehaviour:
     y: 0
     width: 1335
     height: 917
-  m_MinSize: {x: 406, y: 492}
+  m_MinSize: {x: 404, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
   controlID: 10
@@ -231,8 +231,8 @@ MonoBehaviour:
     y: 0
     width: 1335
     height: 641
-  m_MinSize: {x: 406, y: 221}
-  m_MaxSize: {x: 8006, y: 4021}
+  m_MinSize: {x: 404, y: 221}
+  m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
   controlID: 11
 --- !u!114 &11
@@ -355,19 +355,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/PWGame
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/PWGame
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\NHTI\Documents\GitHub\Grady-Kayli-SueClub\Area_Test
+  m_LastProjectPath: D:\KVaughn\Github\Grady-Kayli-SueClub\Area_Test
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 20290000
-    m_LastClickedID: 10528
-    m_ExpandedIDs: 00000000ac270000b0270000d427000084280000202900006a2900008229000000ca9a3bffffff7f
+    m_SelectedIDs: 80290000
+    m_LastClickedID: 10624
+    m_ExpandedIDs: 000000008029000084290000a82900004c2a0000da2a00001e2b0000362b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -395,7 +395,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ac270000b0270000d427000084280000202900006a29000082290000
+    m_ExpandedIDs: 000000008029000084290000a82900004c2a0000da2a00001e2b0000362b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -513,9 +513,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 8cbafbff
     m_LastClickedID: 0
-    m_ExpandedIDs: 86e1ffff64e2ffff7ae6ffff86e6ffff7ceeffff9efbffff00000000
+    m_ExpandedIDs: b6cefbff8c0ffcff0c1efcffe428fcff123cfcff624afcfffc64fcff4e76fcffaa7cfcff7c7dfcff6081fcff6881fcffdc84fcff34f3ffff7ef8ffff00000000522e00007c2e00009c2e0000a02e0000e82e0000a82f0000ac2f00002e3000003430000056320000308d00005a8d00007a8d00007e8d0000c68d00007c8e0000808e0000028f0000088f0000c48f0000fe900000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -534,7 +534,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
   m_ExpandedScenes:
-  - Test Menu
+  - Test_Area_Attempt1
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -571,9 +571,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 68.79226, y: -1367.3342, z: 1153.4412}
+    m_Target: {x: -12.8256, y: -1469.2034, z: 950.5618}
     speed: 2
-    m_Value: {x: 68.79226, y: -1367.3342, z: 1153.4412}
+    m_Value: {x: -12.8256, y: -1469.2034, z: 950.5618}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -597,9 +597,9 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.4162713, y: -0.0059302095, z: 0.0025881324, w: -0.9092174}
+    m_Target: {x: 0.48174214, y: -0.023981, z: 0.013323448, w: 0.8758836}
     speed: 2
-    m_Value: {x: -0.4162713, y: -0.0059302095, z: 0.0025881326, w: -0.9092174}
+    m_Value: {x: 0.48174214, y: -0.023981, z: 0.013323448, w: 0.8758836}
   m_Size:
     m_Target: 1956.5781
     speed: 2
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 738
-    width: 1337
-    height: 250
+    y: 733
+    width: 1333
+    height: 255
   m_PersistentViewDataDictionary: {fileID: 0}

@@ -111,6 +111,9 @@ public class PWGame : Game {
         float zoomFactor = 2.0f;
         float followTimeDelta = 0.8f;
 
+        Vector3 maxCamY = new Vector3(0, 50, 0);
+        Vector3 minCamY = new Vector3(0, 14, 0);
+
         //THANK YOU PROF. WALEK
         Vector3 result = Vector3.zero;
         // Start Small for the Max. Start Large for the Min
@@ -136,11 +139,23 @@ public class PWGame : Game {
         {
             Camera.main.orthographicSize = distance;
         }
-        Camera.main.transform.position = Vector3.Slerp(Camera.main.transform.position, cameraDestination, followTimeDelta);
+
+        if(Camera.main.transform.position.y >= minCamY.y)
+        {
+            float mincam = minCamY.y;
+            Camera.main.transform.position = Vector3.Slerp(Camera.main.transform.position, minCamY, followTimeDelta);
+        }
+        else
+        { 
+            // BELOW WORKS 
+            Camera.main.transform.position = Vector3.Slerp(Camera.main.transform.position, cameraDestination, followTimeDelta);
+        }
 
         if ((cameraDestination - Camera.main.transform.position).magnitude <= 0.05f)
+        {
             Camera.main.transform.position = cameraDestination;
-
+        }
+        // max Y = 50 MIN Y = 14
     }
 
     protected void FixedUpdate_MainMenu()
