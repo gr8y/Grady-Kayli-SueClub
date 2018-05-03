@@ -84,28 +84,40 @@ public class PWPlayerPawn : PWPawn {
             }
         }
     }
-    
+
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "MovePlane")
+        if (other.gameObject.tag == "MovePlane")
         {
             PuzzleZone = true;
-            if (Input.GetKeyDown("d"))
+
+            float valueX = Input.GetAxis("Horizontal");
+            float valueY = Input.GetAxis("Vertical");
+            if (valueX > 0)
             {
                 rb.velocity = transform.right * SlipSpeed;
             }
-            else if (Input.GetKeyDown("a"))
+            else if (valueX < 0)
             {
                 rb.velocity = transform.right * -SlipSpeed;
             }
-            else if (Input.GetKeyDown("w"))
+            else if (valueY > 0)
             {
                 rb.velocity = transform.forward * SlipSpeed;
             }
-            else if (Input.GetKeyDown("s"))
+            else if (valueY < 0)
             {
                 rb.velocity = transform.forward * -SlipSpeed;
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Goal")
+        {
+            PuzzleZone = false;
+            //you win!
         }
     }
 
