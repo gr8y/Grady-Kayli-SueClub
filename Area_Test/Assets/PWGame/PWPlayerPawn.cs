@@ -10,7 +10,7 @@ public class PWPlayerPawn : PWPawn {
     public float MoveSpeed = 10f;
     public float RotateSpeed = 180f;
     public float MinVelocity = .01f;
-    public float SlipSpeed = 15f;
+    public float SlipSpeed = 45f;
 
     public float Deadzone = .1f; 
     //public Transform ProjectileSpawn;
@@ -24,7 +24,7 @@ public class PWPlayerPawn : PWPawn {
 
         // Add and Set up Rigid Body
         rb = gameObject.AddComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         //currentProjectile = Projectile1;
 
     }

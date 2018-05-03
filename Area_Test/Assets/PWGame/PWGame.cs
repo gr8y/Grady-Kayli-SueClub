@@ -112,7 +112,8 @@ public class PWGame : Game {
         float followTimeDelta = 0.8f;
 
         Vector3 maxCamY = new Vector3(0, 50, 0);
-        Vector3 minCamY = new Vector3(0, 14, 0);
+        Vector3 minCamY = transform.position;
+        minCamY.y = 14f;
 
         //THANK YOU PROF. WALEK
         Vector3 result = Vector3.zero;
@@ -139,17 +140,20 @@ public class PWGame : Game {
         {
             Camera.main.orthographicSize = distance;
         }
-
-        if(Camera.main.transform.position.y >= minCamY.y)
+        
+            //Vector3 temp = transform.position;
+            //temp.x = 10.0f;
+            //transform.position = temp;
+        /*if(Camera.main.transform.position.y >= minCamY.y)
         {
             float mincam = minCamY.y;
             Camera.main.transform.position = Vector3.Slerp(Camera.main.transform.position, minCamY, followTimeDelta);
         }
         else
-        { 
-            // BELOW WORKS 
-            Camera.main.transform.position = Vector3.Slerp(Camera.main.transform.position, cameraDestination, followTimeDelta);
-        }
+        { */
+        // BELOW WORKS 
+        Camera.main.transform.position = Vector3.Slerp(Camera.main.transform.position, cameraDestination, followTimeDelta);
+        //}
 
         if ((cameraDestination - Camera.main.transform.position).magnitude <= 0.05f)
         {
