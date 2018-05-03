@@ -26,6 +26,8 @@ public class PWGame : Game {
     public AudioClip startGameClip;
     public AudioClip changeClassClip;
 
+    public GameObject gameOverPanel;
+
     public float OFD = 15f; // Off Set Distance  
 
     //Game Mode Variable
@@ -101,6 +103,13 @@ public class PWGame : Game {
 
         CenterCamera();
         // Then Process where the camera's postion is based on location of the pawns.  
+
+        //game over
+        if (ActivePlayerList.Count == 0)
+        {
+            gameOverPanel.SetActive(true);
+        }
+
     }
 
 
