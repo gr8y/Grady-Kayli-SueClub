@@ -6,18 +6,23 @@ public class Projectile : Actor {
 
     public float damageAmount = 10.0f;
     public float movementSpeed = 20f;
-    public float lifetime = 2f;
+    public float lifetime = 5.0f;
     Rigidbody rb; 
     
     void Start()
     {
         rb = gameObject.AddComponent<Rigidbody>();
-        rb.velocity = transform.forward * movementSpeed;
-        rb.useGravity = false; 
+        rb.useGravity = false;
         Destroy(gameObject, lifetime);
     }
 
-   
+    void Update()
+    {
+        rb.velocity = transform.forward * movementSpeed;
+       
+    }
+
+
 
     void OnTriggerEnter(Collider other)
     {

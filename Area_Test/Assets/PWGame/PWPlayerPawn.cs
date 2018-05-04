@@ -12,12 +12,12 @@ public class PWPlayerPawn : PWPawn {
     public float MinVelocity = .01f;
     public float SlipSpeed = 45f;
 
-    public float Deadzone = .1f; 
-    //public Transform ProjectileSpawn;
-    //public GameObject Projectile1;
+    public float Deadzone = .1f;
+    public Transform ProjectileSpawn;
+    public GameObject Projectile1;
     //public GameObject Projectile2;
     //GameObject currentProjectile;
-
+    //PWGame pc;
     public virtual void Start()
     {
         IsSpectator = false;
@@ -26,6 +26,8 @@ public class PWPlayerPawn : PWPawn {
         rb = gameObject.AddComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         //currentProjectile = Projectile1;
+
+        //pc = GetComponent<PWGame>();
 
     }
 
@@ -95,20 +97,33 @@ public class PWPlayerPawn : PWPawn {
             float valueY = Input.GetAxis("Vertical");
             if (valueX > 0)
             {
-                rb.velocity = transform.right * SlipSpeed;
+                Vector3 speed = rb.velocity;
+                speed.x = SlipSpeed;
+                rb.velocity = speed;
             }
             else if (valueX < 0)
             {
-                rb.velocity = transform.right * -SlipSpeed;
+                Vector3 speed = rb.velocity;
+                speed.x = -SlipSpeed;
+                rb.velocity = speed;
             }
             else if (valueY > 0)
             {
-                rb.velocity = transform.forward * SlipSpeed;
+                Vector3 speed = rb.velocity;
+                speed.z = SlipSpeed;
+                rb.velocity = speed;
             }
             else if (valueY < 0)
             {
-                rb.velocity = transform.forward * -SlipSpeed;
+                Vector3 speed = rb.velocity;
+                speed.z = -SlipSpeed;
+                rb.velocity = speed;
             }
+        }
+        if(other.gameObject.tag == "Floor"){
+
+            PuzzleZone = false;
+
         }
     }
 
@@ -121,16 +136,16 @@ public class PWPlayerPawn : PWPawn {
         }
     }
 
-    /*public override void Fire1(bool value)
+    public override void Fire1(bool value)
     {
         if (value)
         {
             // Fire Projectile
-            //  Factory(currentProjectile, ProjectileSpawn.position, ProjectileSpawn.rotation, controller);
+              Factory(Projectile1, ProjectileSpawn.position, ProjectileSpawn.rotation, controller);
 
         }
     }
-
+    /*
     public override void Fire2(bool value)
     {
         if (value)

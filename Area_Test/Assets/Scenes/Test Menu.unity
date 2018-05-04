@@ -733,22 +733,22 @@ Prefab:
     - target: {fileID: 224715338354823632, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 504
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224715338354823632, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 258.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224715338354823632, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 1008
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224715338354823632, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 517
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224715338354823632, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
@@ -773,12 +773,12 @@ Prefab:
     - target: {fileID: 224715338354823632, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224715338354823632, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1694681219436128, guid: 627c0c8b3038f6242845074b42254a1b, type: 2}
       propertyPath: m_IsActive
@@ -916,12 +916,12 @@ Prefab:
     - target: {fileID: 224414777356159800, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224357970590665214, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4667644104422426, guid: 627c0c8b3038f6242845074b42254a1b, type: 2}
       propertyPath: m_RootOrder
@@ -2021,17 +2021,17 @@ Prefab:
     - target: {fileID: 224715338354823632, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224715338354823632, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224715338354823632, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 223162768074699728, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
@@ -2041,6 +2041,11 @@ Prefab:
     - target: {fileID: 223162768074699728, guid: 627c0c8b3038f6242845074b42254a1b,
         type: 2}
       propertyPath: m_PixelPerfect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114238951297270218, guid: 627c0c8b3038f6242845074b42254a1b,
+        type: 2}
+      propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2674,6 +2679,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479610544898494, guid: 66158cbf03a78004bac35de715a49291,
+        type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66158cbf03a78004bac35de715a49291, type: 2}
@@ -3415,7 +3425,7 @@ GameObject:
   - component: {fileID: 1916586612}
   - component: {fileID: 1916586611}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: StartPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3459,7 +3469,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: a555b33c892ad1043aec8cc98bccf774, type: 3}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

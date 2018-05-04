@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33770886749494628}
   - component: {fileID: 135785376960137428}
   - component: {fileID: 23825632358048346}
-  - component: {fileID: 114219426663556452}
+  - component: {fileID: 114786550693442618}
   m_Layer: 0
   m_Name: Projectile2
   m_TagString: Untagged
@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1903760751287428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3208389, y: 0.59999996, z: 54.922127}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -11.550136, y: -1.5470592, z: 9.315543}
+  m_LocalScale: {x: 0.79585785, y: 0.69628, z: 1.2335798}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1903760751287428}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114219426663556452
+--- !u!114 &114786550693442618
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,15 +92,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1903760751287428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc62aa7a53ea57e4b940e0c5fbbdf6eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 07d886e3b07a44741bdc7b2eaaba648b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IgnoresDamage: 1
   LogDamageEvents: 1
-  Owner: {fileID: 0}
-  damageAmount: 30
-  movementSpeed: 25
-  lifetime: 2
+  damageAmount: 10
+  movementSpeed: 20
+  lifetime: 5
 --- !u!135 &135785376960137428
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -109,7 +108,7 @@ SphereCollider:
   m_GameObject: {fileID: 1903760751287428}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

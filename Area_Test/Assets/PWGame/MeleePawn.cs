@@ -111,7 +111,7 @@ public class MeleePawn : PWPawn
             }
         }
     }
-
+   public float damageAmount = 10.0f;
     public override void Fire1(bool value)
     {
         if (value)
@@ -123,9 +123,13 @@ public class MeleePawn : PWPawn
                 //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * MyHit.distance, Color.yellow);
                 //Debug.Log("Did Hit");
                 Vector3 fwd = transform.TransformDirection(Vector3.forward);
-
-                if (Physics.Raycast(transform.position, fwd, 10))
-                    print("There is something in front of the object!");
+                GameObject testing;
+                if (Physics.Raycast(transform.position, fwd, 5))
+                {
+                    // print("There is something in front of the object!");
+                    testing = MyHit.collider.gameObject;
+                    Destroy(testing);
+                }
             }
         }
             

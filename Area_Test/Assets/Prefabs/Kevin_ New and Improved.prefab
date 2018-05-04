@@ -308,9 +308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4a18df8c31972438382c10fe237c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IgnoresDamage: 1
+  IgnoresDamage: 0
   LogDamageEvents: 1
-  IsSpectator: 1
+  IsSpectator: 0
   PathPoints: []
   Explosion: {fileID: 198644038030107614}
   damageAmount: 10

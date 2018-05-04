@@ -13,7 +13,7 @@ public class Goal : Info {
         {
             Debug.Log("You win!");
             youWinPanel.SetActive(true);
-            //DestroyObject(enemySpawner);
+           // DestroyObject(enemySpawner);
         }
     }
 }
